@@ -5,7 +5,7 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 import "@chainlink/contracts/src/v0.8/VRFV2WrapperConsumerBase.sol";
 
-contract VRFv2DirectFundingConsumer is
+contract lottery is
     VRFV2WrapperConsumerBase,
     ConfirmedOwner
 {

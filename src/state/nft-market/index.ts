@@ -29,7 +29,7 @@ const useNFTMarket = () => {
       });
       if (response.status == 201) {
         const json = await response.json();
-        console.log(json);
+        console.log(json.uri);
         const transaction: TransactionResponse = await nftMarket.createNFT(
           json.uri
         );
