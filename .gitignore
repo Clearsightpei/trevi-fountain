@@ -47,3 +47,5 @@ cache
 artifacts/@openzeppelin
 artifacts/build-info
 dist
+
+image.png
