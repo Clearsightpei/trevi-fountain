@@ -47,7 +47,7 @@ const CreationForm = ({ onSubmit }: CreationFormProps) => {
   const initialValues: CreationValues = {
     name: "",
     description: "",
-    generatedImage: undefined, // Initialize the generatedImage field to undefined
+    generatedImage: "", // Initialize the generatedImage field to undefined
   };
 
   const handleGeneratePicture = async (
@@ -61,19 +61,15 @@ const CreationForm = ({ onSubmit }: CreationFormProps) => {
           console.log("Description: ", description)
           console.log("Output string: ", outputString)
           setGeneratedImage(outputString);
-          console.log("Output from the Promise:", generatedImage);
+          // Set the generated image URL in the component's state
+          formikProps.setFieldValue("generatedImage", outputString);
+
           // You can perform further operations with 'generatedImage' here
         })
         .catch((error) => {
           console.error("Error occurred:", error);
           // Handle the error if the Promise is rejected
         });
-      // const generatedImage = 'https://miro.medium.com/v2/resize:fit:1400/1*o0d9QxDcnVgeuQCJPZE2qA.png';
-      // Set the generated image URL in the component's state
-      // setGeneratedImage(generatedImage);
-
-      // You can also set the generated image URL in the formik form state
-      formikProps.setFieldValue("generatedImage", generatedImage);
     } catch (error) {
       // Handle errors if any
       console.error("Error generating picture:", error);
@@ -110,7 +106,7 @@ const CreationForm = ({ onSubmit }: CreationFormProps) => {
             )}
 
             {/* The "SubmitButton" component will now handle form submission */}
-            <SubmitButton generatedImage={generatedImage} />
+            <SubmitButton />
           </div>
         </Form>
       )}

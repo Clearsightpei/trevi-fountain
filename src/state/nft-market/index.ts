@@ -22,17 +22,20 @@ const useNFTMarket = () => {
       const data = new FormData();
       data.append("name", values.name);
       data.append("description", values.description);
-      data.append("image", values.image!);
+      data.append("image", values.generatedImage);
       const response = await fetch("/api/nft-storage", {
         method: "POST",
         body: data,
       });
       if (response.status == 201) {
         const json = await response.json();
+        console.log(json.uri);
         const transaction: TransactionResponse = await nftMarket.createNFT(
           json.uri
         );
+        console.log(transaction);
         await transaction.wait();
+        console.log(transaction);
       }
     } catch (e) {
       console.log(e);
